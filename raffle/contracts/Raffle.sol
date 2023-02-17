@@ -30,7 +30,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     uint256 private beginTime;
     uint256 private immutable interval;
 
-event RaffleBuy(address indexed player);
+    event RaffleBuy(address indexed player);
     event RequestedRaffleWinner(uint256 indexed player);
     event WinnerPicked(address indexed player);
 

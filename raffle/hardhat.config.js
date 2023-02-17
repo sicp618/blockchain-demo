@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("hardhat-gas-reporter")
 require("solidity-coverage")
 require("./tasks/block-number")
+require("hardhat-deploy")
 require("dotenv").config()
 
 const GOERLI_API_KEY = process.env.GOERLI_API_KEY
@@ -13,6 +14,9 @@ module.exports = {
   solidity: "0.8.17",
   defaultNetwork: "hardhat",
   networks: {
+    hardhat: {
+      chainId: 31337,
+    },
     goerli: {
       url: `https://eth-goerli.g.alchemy.com/v2/${GOERLI_API_KEY}`,
       accounts: [ GOERLI_PRIVATE_KEY ]
