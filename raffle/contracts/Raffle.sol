@@ -5,8 +5,8 @@ import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/AutomationCompatible.sol";
 
-error RaffleNotEnough();
-    error RaffleNotOpen();
+error RaffleNotEnoughETH();
+error RaffleNotOpen();
 error RaffleTransferFailed();
 error RaffleUpkeepNotNeeded();
 
@@ -55,7 +55,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
 
     function buyRaffle() public payable {
         if (msg.value < price) {
-            revert RaffleNotEnough();
+            revert RaffleNotEnoughETH();
         }
         if (raffleState != RaffleState.OPEN) {
             revert RaffleNotOpen();
@@ -79,6 +79,14 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
 
     function getNumberOfPlayers() public view returns (uint256) {
         return players.length;
+    }
+
+    function getInterval() public view returns (uint256) {
+        return interval;
+    }
+
+    function getPrice() public view returns (uint256) {
+        return price;
     }
 
     function fulfillRandomWords(uint256, uint256[] memory randomWords) internal override {
