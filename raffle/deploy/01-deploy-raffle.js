@@ -22,6 +22,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         vrfCoordinatorV2Address = networkConfig[chainId]["vrfCoordinatorV2"]
         subId = networkConfig[chainId]["subId"]
     }
+
     const price = networkConfig[chainId]["price"]
     const gasLane = networkConfig[chainId]["gasLane"]
     const callbackGasLimit = networkConfig[chainId]["callbackGasLimit"]
@@ -33,6 +34,11 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         log: true,
         waitConfirmation: network.config.blockConfirmations || 1,
     })
+
+    if (developmentChains.includes(network.name)) {
+        const vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
+        await vrfCoordinatorV2Mock.addConsumer(subId, raffle.address)
+    }
 
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("Verifying Raffle contract...")
