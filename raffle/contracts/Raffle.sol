@@ -19,6 +19,7 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
     uint256 immutable private price;
     address payable[] players;
     RaffleState private raffleState;
+    address private recentWinner;
 
     VRFCoordinatorV2Interface private immutable vrfCoordinator;
     bytes32 private immutable gasLane;
@@ -89,9 +90,14 @@ contract Raffle is VRFConsumerBaseV2, AutomationCompatibleInterface {
         return price;
     }
 
+    function getRecentWinner() public view returns (address) {
+        return recentWinner;
+    }
+
     function fulfillRandomWords(uint256, uint256[] memory randomWords) internal override {
         uint256 winnerIndex = randomWords[0] % players.length;
         address payable winner = players[winnerIndex];
+        recentWinner = winner;
 
         raffleState = RaffleState.OPEN;
         players = new address payable[](0);
