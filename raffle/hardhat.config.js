@@ -19,7 +19,8 @@ module.exports = {
     },
     goerli: {
       url: `https://eth-goerli.g.alchemy.com/v2/${GOERLI_API_KEY}`,
-      accounts: [ GOERLI_PRIVATE_KEY ]
+      accounts: [ GOERLI_PRIVATE_KEY ],
+      chainId: 5,
     },
     localhost: {
       url: "http://localhost:8545",
