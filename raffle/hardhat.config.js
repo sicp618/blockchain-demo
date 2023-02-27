@@ -3,11 +3,13 @@ require("hardhat-gas-reporter")
 require("solidity-coverage")
 require("./tasks/block-number")
 require("hardhat-deploy")
+require("@nomiclabs/hardhat-etherscan")
 require("dotenv").config()
 
 const GOERLI_API_KEY = process.env.GOERLI_API_KEY
 const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY
 const COIN_MARKET_CAP = process.env.COIN_MARKET_CAP
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -26,6 +28,9 @@ module.exports = {
       url: "http://localhost:8545",
       chainId: 1337
     }
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
   },
   gasReporter: {
     enabled: false,
