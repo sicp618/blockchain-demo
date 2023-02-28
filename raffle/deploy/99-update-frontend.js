@@ -13,14 +13,16 @@ module.exports = async function () {
 }
 
 async function updateAbi() {
-    const raffle = await ethers.getContract("Raffle")
-    const abi = raffle.interface.format(ethers.utils.FormatTypes.json, "Raffle")
+    const { deployer } = await getNamedAccounts()
+    const raffle = await ethers.getContract("RaffleByNumberOfPeople", deployer)
+    const abi = raffle.interface.format(ethers.utils.FormatTypes.json, "RaffleByNumberOfPeople")
     fs.writeFileSync(FRONTEND_ABI_FILE, abi)
 }
 
 async function updateContractAddresses() {
-    const raffle = await ethers.getContract("Raffle")
     const chainId = await network.config.chainId.toString()
+    const { deployer } = await getNamedAccounts()
+    const raffle = await ethers.getContract("RaffleByNumberOfPeople", deployer)
     const currentAddress = JSON.parse(fs.readFileSync(FRONTEND_ADDRESS_FILE, "utf8"))
     console.log(`update chainId ${chainId} to ${currentAddress}`)
     if (chainId in currentAddress) {

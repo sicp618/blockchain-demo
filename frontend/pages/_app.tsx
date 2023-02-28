@@ -3,7 +3,7 @@ import type {AppProps} from 'next/app'
 import {MoralisProvider} from "react-moralis"
 import {NotificationProvider} from "web3uikit"
 
-export default function App({Component, pageProps}: AppProps) {
+function MyApp({Component, pageProps}: AppProps) {
     return (
         <MoralisProvider initializeOnMount={false}>
             <NotificationProvider>
@@ -12,3 +12,5 @@ export default function App({Component, pageProps}: AppProps) {
         </MoralisProvider>
     )
 }
+
+export default MyApp;

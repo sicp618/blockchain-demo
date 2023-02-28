@@ -96,6 +96,10 @@ contract RaffleByNumberOfPeople is VRFConsumerBaseV2 {
         return state;
     }
 
+    function getRecentWinner() public view returns (address) {
+        return recentWinner;
+    }
+
     function fulfillRandomWords(
         uint256 /* requestId */,
         uint256[] memory randomWords
