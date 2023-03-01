@@ -3,6 +3,7 @@ import { contractAddress, contractABI } from "../constants";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useNotification } from "web3uikit";
+import Link from "next/link";
 
 export default function LotteryEntrance() {
   const dispatch = useNotification();
@@ -64,10 +65,30 @@ export default function LotteryEntrance() {
 
   return (
     <div className="ml-8">
-      <h1 className="mt-4">最近获胜者 {recentWinner}</h1>
-      <h1 className="mt-2">
-        抽奖金额 {ethers.utils.formatUnits(price, "ether")}ETH
+      <h1 className="mt-4">
+        {ethers.utils.formatUnits(price, "ether")} ETH 抽一次，抽取 2 次后会将
+        0.02 ETH 随机返回给一个抽奖者
       </h1>
+      <div className="mt-2">
+        <Link
+          className="text-blue-500 hover:text-blue-700"
+          href={`https://goerli.etherscan.io/address/${raffleAddress}`}
+          target="_blank"
+        >
+          合约地址
+        </Link>
+      </div>
+      <h1 className="mt-4"></h1>
+      <div className="mt-2">
+        <h1>最近获奖者</h1>
+        <Link
+          className="text-blue-500 hover:text-blue-700 mt-2"
+          href={`https://goerli.etherscan.io/address/${recentWinner}`}
+          target="_blank"
+        >
+          {recentWinner}
+        </Link>
+      </div>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white mt-4 font-bold py-2 px-4 rounded ml-auto"
         onClick={async () => {
