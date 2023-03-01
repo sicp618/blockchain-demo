@@ -18,7 +18,7 @@ export default function Home() {
       {isWeb3Enabled ? (
         <LotteryEntrance />
       ) : (
-        <div className="ml-8 mt-4">请连接钱包</div>
+        <div className="ml-8 mt-4">请连接钱包(仅支持 goerli)</div>
       )}
     </div>
   );
