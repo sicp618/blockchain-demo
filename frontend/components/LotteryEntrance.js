@@ -24,7 +24,7 @@ export default function LotteryEntrance() {
   const { runContractFunction: getRecentWinner } = useWeb3Contract({
     abi: contractABI,
     contractAddress: raffleAddress,
-    functionName: "getRecnetWinner",
+    functionName: "getRecentWinner",
     params: {},
   });
 
@@ -71,8 +71,9 @@ export default function LotteryEntrance() {
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white mt-4 font-bold py-2 px-4 rounded ml-auto"
         onClick={async () => {
-          await buyLottery({
+          const r = await buyLottery({
             onSuccess: handleSuccess,
+            onError: (e) => console.log(e),
           });
         }}
       >
