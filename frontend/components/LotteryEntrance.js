@@ -24,7 +24,7 @@ export default function LotteryEntrance() {
   const { runContractFunction: getRecentWinner } = useWeb3Contract({
     abi: contractABI,
     contractAddress: raffleAddress,
-    functionName: "getRecnetWinner",
+    functionName: "getRecentWinner",
     params: {},
   });
 
