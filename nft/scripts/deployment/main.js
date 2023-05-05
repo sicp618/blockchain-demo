@@ -13,6 +13,8 @@ const { deployRandomNumberConsumer } = require("./deployRandomNumberConsumer")
 const {
     deployRandomNumberDirectFundingConsumer,
 } = require("./deployRandomNumberDirectFundingConsumer")
+const { deployNftMarket } = require("./deployNftMarket")
+const { deployCubeNft } = require("./deployCubeNft")
 
 async function main() {
     await run("compile")
@@ -22,6 +24,8 @@ async function main() {
     await deployPriceConsumerV3(chainId)
     await deployRandomNumberConsumer(chainId)
     await deployRandomNumberDirectFundingConsumer(chainId)
+    await deployNftMarket(chainId)
+    await deployCubeNft(chainId)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
