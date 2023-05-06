@@ -16,7 +16,7 @@ contract CubeNft is ERC721 {
         owner = msg.sender;
     }
 
-    function createNft() public returns (uint256) {
+    function mintNft() public returns (uint256) {
         require(msg.sender == owner, "Only owner can create NFTs");
         uint256 newTokenId = tokenCounter;
         _safeMint(msg.sender, newTokenId);
