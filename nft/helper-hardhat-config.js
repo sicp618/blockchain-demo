@@ -22,6 +22,9 @@ const networkConfig = {
         fundAmount: "0",
         automationUpdateInterval: "30",
     },
+    5: {
+        name: "goerli",
+    },
     11155111: {
         name: "sepolia",
         linkToken: "0x779877A7B0D9E8603169DdbD7836e478b4624789",

@@ -64,6 +64,11 @@ module.exports = {
         localhost: {
             chainId: 31337,
         },
+        goerli: {
+            url: MAINNET_RPC_URL,
+            accounts: [ PRIVATE_KEY ],
+            chainId: 5,
+        },
         sepolia: {
             url: SEPOLIA_RPC_URL !== undefined ? SEPOLIA_RPC_URL : "",
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
