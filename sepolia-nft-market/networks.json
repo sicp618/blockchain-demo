@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "NftMarket": {
+      "address": "0xf8eF05B44BFDddAd2509bdcc55c387DAa591f1C6",
+      "startBlock": 3429386
+    }
+  }
+}
