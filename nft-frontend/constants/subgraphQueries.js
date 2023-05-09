@@ -1,9 +1,10 @@
-import { gql } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 
 const GET_ACTIVE_ITEMS = gql`
     {
-        itemListeds(first: 10) {
+        activeItems(first: 10, where: { buyer: "0x0000000000000000000000000000000000000000" }) {
             id
+            buyer
             seller
             nftAddress
             tokenId
@@ -11,4 +12,5 @@ const GET_ACTIVE_ITEMS = gql`
         }
     }
 `;
+
 export default GET_ACTIVE_ITEMS;

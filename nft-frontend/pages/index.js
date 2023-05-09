@@ -21,7 +21,7 @@ export default function Home() {
                     loading || !listedNfts ? (
                         <div>Loading...</div>
                     ) : (
-                        listedNfts.itemListeds.map((nft) => {
+                        listedNfts.activeItems.map((nft) => {
                             const { price, nftAddress, tokenId, seller } = nft;
                             return marketplaceAddress ? (
                                 <NFTBox
