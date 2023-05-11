@@ -1,8 +1,0 @@
-{
-  "sepolia": {
-    "CubeNft": {
-      "address": "0x62a680C4BcE7112730dD67d3dbCFc8b4617B5C29",
-      "startBlock": 3429393
-    }
-  }
-}
