@@ -8,7 +8,9 @@ import { useQuery } from "@apollo/client";
 export default function Home() {
     const { chainId, isWeb3Enabled } = useMoralis();
     const chainString = chainId ? parseInt(chainId).toString() : null;
-    const marketplaceAddress = chainId ? networkMapping[chainString].NftMarket[0] : null;
+    const marketplaceAddress = chainId
+        ? networkMapping[chainString].NftMarket[0]
+        : null;
 
     const { loading, error, data: listedNfts } = useQuery(GET_ACTIVE_ITEMS);
     console.log("listedNfts ", loading, marketplaceAddress, error, listedNfts);
@@ -33,7 +35,10 @@ export default function Home() {
                                     key={`${nftAddress}${tokenId}`}
                                 />
                             ) : (
-                                <div>Network error, please switch to a supported network. </div>
+                                <div>
+                                    Network error, please switch to a supported
+                                    network.{" "}
+                                </div>
                             );
                         })
                     )
