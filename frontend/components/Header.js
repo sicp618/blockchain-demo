@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 
 export default function Header() {
-    const { isWeb3Enabled, account } = useMoralis();
+    const { isWeb3Enabled, account, chainId } = useMoralis();
     const [pickType, setPickType] = useState("nft");
 
     return (
         <div>
             <nav className="p-5 border-b-2 flex flex-row justify-between items-center">
                 <h1 className="py-4 px-4 font-bold text-3xl">
-                    NFT Marketplace
+                    Sepolia Only
                 </h1>
                 <div className="flex flex-row items-center">
                     <Link href="/">
