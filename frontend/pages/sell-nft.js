@@ -1,3 +1,5 @@
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
@@ -11,7 +13,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
     const { chainId, account, isWeb3Enabled } = useMoralis();
-    const chainString = chainId ? parseInt(chainId).toString() : "31337";
+    const chainString = chainId ? parseInt(chainId).toString() : "11155111";
     const marketplaceAddress = networkMapping[chainString].NftMarket[0];
     const dispatch = useNotification();
     const [proceeds, setProceeds] = useState("0");
