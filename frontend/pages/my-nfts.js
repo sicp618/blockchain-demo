@@ -8,14 +8,17 @@ import queryUserNfts from "../constants/cubeNftGraphQueries";
 import NFTDetail from "../components/NFTDetail";
 
 export default function MyNFTs() {
-    const { chainId, isWeb3Enabled } = useMoralis();
+    const { chainId, isWeb3Enabled, account } = useMoralis();
     const chainString = chainId ? parseInt(chainId).toString() : null;
     const nftAddress = chainId ? networkMapping[chainString].CubeNft[0] : null;
 
-    // let userAddress = "0x33acbE339D610dA8943f1143257d97740aDA0d4E";
-    // const { loading, error, data: listedNfts } = useQuery(queryUserNfts(userAddress));
-    const { loading, error, data: ntfs } = useQuery(queryUserNfts);
-    console.log("listedNfts ", loading, nftAddress, error, ntfs);
+    const {
+        loading,
+        error,
+        data: ntfs,
+    } = useQuery(queryUserNfts, {
+        variables: { account },
+    });
 
     return (
         <div className="container mx-auto">
@@ -28,13 +31,7 @@ export default function MyNFTs() {
                         ntfs.nftInfos.map((nft) => {
                             const { from, to, tokenId } = nft;
                             return (
-                                <NFTDetail
-                                    from={from}
-                                    to={to}
-                                    tokenId={tokenId}
-                                    address={nftAddress}
-                                    key={tokenId}
-                                />
+                                <NFTDetail from={from} to={to} tokenId={tokenId} address={nftAddress} key={tokenId} />
                             );
                         })
                     )
