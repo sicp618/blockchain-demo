@@ -68,4 +68,9 @@ contract StableCoinTest is Test {
 
         assertEq(stableCoin.allowance(address(user1), user2), allowanceAmount);
     }
+
+    function testRandom(uint256 data) public {
+        console2.log(data);
+        assertEq(data, 2);
+    }
 }
